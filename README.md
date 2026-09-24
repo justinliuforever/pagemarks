@@ -30,7 +30,7 @@ Fingering recall / precision on the public set:
 
 | System | Setting | Recall | Precision |
 |---|---|---|---|
-| PageMarks | mean of three seeds | 0.925 | 0.948 |
+| PageMarks | the paper's model | 0.948 | 0.970 |
 | Audiveris 5.11 | fingering recognition on | 0.642 | 0.915 |
 | GPT-6 Astra | `reasoning_effort: high` | 0.981 | 0.988 |
 | Claude Opus 5.5 | adaptive thinking, `effort: high` | 0.953 | 0.956 |
