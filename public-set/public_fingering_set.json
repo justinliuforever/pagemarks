@@ -1,0 +1,219 @@
+{
+ "frozen": "2026-09-23",
+ "rule": "A score qualifies when PDMX keeps it in its deduplicated subset with a valid MusicXML; it is one piano part on two\nstaves; it carries at least MIN_DIGITS fingering marks, of which at least FINGERING_LIKE are digits 1-5 (a score that\nspends the element on scale degrees or chord numbers is not fingered); and neither it, nor any score PDMX groups with\nit as the same song or arrangement, nor any score of the same normalised song name, is a source named by an --exclude\nmanifest. Every qualifying score is taken, cut after the bar that keeps its MuseScore render within MAX_PAGES pages,\nand that cut MusicXML is both what is rendered and the truth.",
+ "renderer": "MuseScore4 4.7.5",
+ "min_digits": 10,
+ "fingering_like": 0.95,
+ "max_pages": 5,
+ "excluded_sources": 14319,
+ "pieces": [
+  {
+   "id": "public-QmcUNxLQYYzj",
+   "pdmx": "./data/2/47/QmcUNxLQYYzjumxRDahRiBL5vmvjGCbDkBzTCwe68iWJuQ.json",
+   "song": "Dance Date",
+   "composer": "?",
+   "bars": 28,
+   "of_bars": 28,
+   "pages": 2,
+   "music_pages": [
+    1,
+    2
+   ],
+   "marks": 24
+  },
+  {
+   "id": "public-QmNcQTkXu3ih",
+   "pdmx": "./data/6/13/QmNcQTkXu3ihxP6dnKU38Rczy98LmUL5pTvWPoqYZTABbz.json",
+   "song": "Paper Plane's Adventure",
+   "composer": "Vanros Kloud",
+   "bars": 71,
+   "of_bars": 86,
+   "pages": 5,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "marks": 130
+  },
+  {
+   "id": "public-QmNy5dG6L1Cw",
+   "pdmx": "./data/6/54/QmNy5dG6L1CwXxZEScJh4rxhCYLSwEvbFWEYD92EaGaAr1.json",
+   "song": "Dances of the Dolls",
+   "composer": "Dmitri Shostakovich",
+   "bars": 102,
+   "of_bars": 102,
+   "pages": 4,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "marks": 79
+  },
+  {
+   "id": "public-QmacTd5kRquY",
+   "pdmx": "./data/0/13/QmacTd5kRquYh23241dvyAB5amnWTBfPoV8qEG6jtaa1YC.json",
+   "song": "Misterium",
+   "composer": "NA",
+   "bars": 46,
+   "of_bars": 46,
+   "pages": 3,
+   "music_pages": [
+    1,
+    2,
+    3
+   ],
+   "marks": 13
+  },
+  {
+   "id": "public-QmchWj3vG1S9",
+   "pdmx": "./data/2/23/QmchWj3vG1S9qyXzH8XwroLBxWWHSJwv7JAbYPFkxc7HoL.json",
+   "song": "utile",
+   "composer": "Julien CLERC",
+   "bars": 65,
+   "of_bars": 65,
+   "pages": 3,
+   "music_pages": [
+    1,
+    2,
+    3
+   ],
+   "marks": 54
+  },
+  {
+   "id": "public-QmXTgVjSmk3n",
+   "pdmx": "./data/15/45/QmXTgVjSmk3nmt5FVbctjRanDjgcb4oo9LvYgArgpTavUA.json",
+   "song": "Ghost Tales",
+   "composer": "Mathilde Bilbro First edition 1918",
+   "bars": 71,
+   "of_bars": 273,
+   "pages": 5,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "marks": 145
+  },
+  {
+   "id": "public-QmVH1Kk67Aps",
+   "pdmx": "./data/13/24/QmVH1Kk67ApsiXfArceckoYYfeNaS5kANpt9o5FFTD6Tcp.json",
+   "song": "Kohaluna",
+   "composer": "KJHatsuki",
+   "bars": 68,
+   "of_bars": 151,
+   "pages": 4,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "marks": 17
+  },
+  {
+   "id": "public-QmbNdPcaKrEA",
+   "pdmx": "./data/1/34/QmbNdPcaKrEAac2Mt5EpCftTSKLdBcU2EGPzNJZ9rVkND5.json",
+   "song": "Rapszódia",
+   "composer": "Keller Dávid",
+   "bars": 46,
+   "of_bars": 143,
+   "pages": 4,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "marks": 62
+  },
+  {
+   "id": "public-QmdYUQK5nnvj",
+   "pdmx": "./data/3/55/QmdYUQK5nnvjZy5mX1yMp7a7PQtas8kjZWj4C1ZkXLePJd.json",
+   "song": "one piece - overtaken",
+   "composer": "NA",
+   "bars": 53,
+   "of_bars": 53,
+   "pages": 5,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "marks": 39
+  },
+  {
+   "id": "public-QmT4D7BniXE3",
+   "pdmx": "./data/11/3/QmT4D7BniXE3xPxEtxkD3Mqi3Dsg3U4oKxd2Tneu9DDeKR.json",
+   "song": "GRAMOPHONE Waltz Doga",
+   "composer": "NA",
+   "bars": 66,
+   "of_bars": 66,
+   "pages": 3,
+   "music_pages": [
+    1,
+    2,
+    3
+   ],
+   "marks": 159
+  },
+  {
+   "id": "public-QmX5qq4Bf1Aq",
+   "pdmx": "./data/15/4/QmX5qq4Bf1AqNFpbZegBnC21g7n6fHSb7pQCLe9ugmsWaD.json",
+   "song": "Op. 16 (Preparatory Exercises)",
+   "composer": "Aloys Schmitt. Op. 16",
+   "bars": 85,
+   "of_bars": 2352,
+   "pages": 5,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "marks": 116
+  },
+  {
+   "id": "public-QmfV1FjMpvXn",
+   "pdmx": "./data/5/49/QmfV1FjMpvXnVgztP1Z6cXYs2tCwMXyEXtCGgLgTac7Dg8.json",
+   "song": "Easy pieces for beginners",
+   "composer": "NA",
+   "bars": 94,
+   "of_bars": 340,
+   "pages": 5,
+   "music_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "marks": 55
+  }
+ ],
+ "refused": [
+  {
+   "pdmx": "./data/16/41/QmYRELQTwcyGUQ3CPQjfc6Z8vxnZQ6Evm6VRxqpmPuwP1u.json",
+   "why": "its fingering elements hold other numbers"
+  },
+  {
+   "pdmx": "./data/16/35/QmYodFMqfgRyvr6xEwyq3tvNLUHeBc3YiFBDsCxxevdyN3.json",
+   "why": "its fingering elements hold other numbers"
+  }
+ ],
+ "totals": {
+  "pieces": 12,
+  "pages": 48,
+  "music_pages": 48,
+  "marks": 893
+ }
+}
