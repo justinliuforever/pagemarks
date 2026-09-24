@@ -10,6 +10,8 @@ Test set and scorer for *PageMarks: Reading Printed Fingering, Pedal and Dynamic
   the selection rule and each piece's PDMX path.
 - `scorer/` — the note and fingering scorer used for every system in the paper. Python 3, no dependencies.
 - `smb-subset/pages.jsonl` — the 101 pages of the Sheet Music Benchmark used to compare notes.
+- `frontier/` — the prompt every frontier model was given and the protocol: model versions, reasoning settings, output
+  caps, image sizes, re-asks and time limits.
 
 ## Scoring
 
@@ -26,10 +28,11 @@ a 95% bootstrap over pieces.
 
 Fingering recall / precision on the public set:
 
-| System | Recall | Precision |
-|---|---|---|
-| PageMarks (mean of three seeds) | 0.925 | 0.948 |
-| Audiveris 5.11, fingering recognition on | 0.642 | 0.915 |
-| GPT-6 Astra, high effort | 0.981 | 0.988 |
-| GPT-6 Sol, high effort | 0.901 | 0.948 |
-| Grok 4.6, high effort | 0.52 | 0.58 |
+| System | Setting | Recall | Precision |
+|---|---|---|---|
+| PageMarks | mean of three seeds | 0.925 | 0.948 |
+| Audiveris 5.11 | fingering recognition on | 0.642 | 0.915 |
+| GPT-6 Astra | `reasoning_effort: high` | 0.981 | 0.988 |
+| Claude Opus 5.5 | adaptive thinking, `effort: high` | 0.953 | 0.956 |
+| GPT-6 Sol | `reasoning_effort: high` | 0.901 | 0.948 |
+| Grok 4.6 | `reasoning_effort: high` | 0.561 | 0.581 |
