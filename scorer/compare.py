@@ -33,8 +33,6 @@ def align(truth, guess):
     pairs = []
     i, j = rows, cols
     while i or j:
-        # Picking the best of the three candidates, rather than testing equality against the stored score,
-        # is what keeps a long run of gaps from walking off the edge when the sum rounds differently.
         paired = score[i - 1][j - 1] + likeness(truth[i - 1], guess[j - 1]) if i and j else None
         dropped = score[i - 1][j] + GAP if i else None
         added = score[i][j - 1] + GAP if j else None
@@ -117,8 +115,6 @@ def compare_measure(truth, guess, number, found, in_effect=None):
         if a.ties != b.ties:
             found.error("tie", number, f"{a.step}{a.pitch} ties {sorted(a.ties)}, read as {sorted(b.ties)}")
     paired = list(exact)
-    # The same-pitch pass runs first: a bar read a beat late puts unrelated notes on the same onset, and
-    # pairing by onset would book every one of them as a wrong pitch.
     for a, b in take_pairs(wanted, given, lambda a, b: (a.staff, a.pitch) == (b.staff, b.pitch)):
         found.error("onset", number, f"{a.step}{a.pitch} at {a.onset}, read at {b.onset}")
         paired.append((a, b))
@@ -139,7 +135,6 @@ def compare_measure(truth, guess, number, found, in_effect=None):
     for rest in rests_given:
         found.error("extra rest", number, f"staff {rest.staff} at {rest.onset} for {rest.duration}")
 
-    # Scored per bar by kind and value: a comment-form label carries no onset to hold an engine to.
     marks_wanted = Counter(mark[:2] for mark in truth.marks if mark[0] in found.emitted)
     marks_given = Counter(mark[:2] for mark in guess.marks if mark[0] in found.emitted)
     for kind, _ in (marks_wanted & marks_given).elements():

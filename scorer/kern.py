@@ -21,7 +21,6 @@ class Spine:
     fing: bool = False
 
 
-# One field per note added on the same line, in spine order; `x` is a note without a digit.
 def fingered(notes, field):
     parts = field.split()
     for index, note in enumerate(notes):
@@ -54,7 +53,6 @@ def pitch_of(token, key=()):
     octave = 3 + len(letters) if letters[0].islower() else 4 - len(letters)
     step = letters[0].upper()
     written = token.count("#") - token.count("-")
-    # A key signature alters every note of that letter; the token only says so when it differs from the key.
     alter = written if written or "n" in token else dict(key).get(step, 0)
     return step, alter, 12 * (octave + 1) + SEMITONES[step] + alter
 
@@ -133,11 +131,6 @@ def number_staves(spines):
 
 
 def walk_kern(text):
-    """One event per line, so a reader and a writer share the same parse.
-
-    Kinds: header, interp (a line of `*` tokens), bar, data, comment, skip. A data event carries the notes and
-    rests the line added, in spine order, and the `**fing` fields beside them, so a caller can attach digits.
-    """
     spines = []
     for line in text.splitlines():
         if line.startswith("!!"):
@@ -191,20 +184,16 @@ def walk_kern(text):
                 rests += scratch.rests[before_rests:]
         fields = [token for spine, token in zip(spines, tokens) if spine.fing]
         yield "data", line, {"notes": notes, "rests": rests, "fing": fields}
-        # An engine may join spines on the same line it writes notes; leaving the join unapplied would
-        # desynchronise the spine list and silently drop every line after it.
         if any(token in ("*^", "*v", "*-") for token in tokens):
             spines = reshaped(spines, tokens)
 
 
 def is_note(part):
-    """A kern part that read_token turns into a note: not a rest, not hidden, with a letter."""
     part = part.translate(SEPARATORS)
     return "yy" not in part and "r" not in part and pitch_of(INLINE.sub("", part), ()) is not None
 
 
 def inline_of(text):
-    """A spined three-layer label rewritten with the digit on the note: `4c/2`; the `**fing` spine gone from every line."""
     lines = text.splitlines()
     if not lines or "**fing" not in lines[0].split("\t"):
         return text
@@ -236,7 +225,6 @@ def inline_of(text):
 
 
 def well_formed(text):
-    """Every line padded to the width its spines have at that point; nothing is ever removed, global comments left alone."""
     out, width = [], None
     for line in text.splitlines():
         cells = line.split("\t")
@@ -254,8 +242,6 @@ def well_formed(text):
 
 
 def without_layers(text):
-    """The notes-only kern a three-layer label or reading carries: the `**fing` spine or the inline digits, the pedal
-    lines and the dynamic and wedge comments removed, the kern spines followed through their splits and merges."""
     lines = text.split("\n")
     header = lines[0].split("\t") if lines else []
     spined = "**fing" in header

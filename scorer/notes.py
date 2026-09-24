@@ -60,7 +60,6 @@ def fingering_of(note):
 
 
 def words_fingering(direction):
-    """A digit written as `<words>`: Sibelius exports 36 of the engraver's scores this way, 1,388 marks."""
     return tuple(text for text in (w.text.strip() for w in direction.iter("words") if w.text) if text in "12345" and len(text) == 1)
 
 
