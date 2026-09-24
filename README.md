@@ -11,7 +11,7 @@ Test set and scorer for *PageMarks: Reading Printed Fingering, Pedal and Dynamic
 - `scorer/` — the note and fingering scorer used for every system in the paper. Python 3, no dependencies.
 - `smb-subset/pages.jsonl` — the 101 pages of the Sheet Music Benchmark used to compare notes.
 - `frontier/` — the prompt every frontier model was given and the protocol: model versions, reasoning settings, output
-  caps, image sizes, re-asks and time limits.
+  caps, image sizes, re-asks, time limits and the pages each model left empty.
 
 ## Scoring
 

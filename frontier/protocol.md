@@ -33,3 +33,20 @@ upscaled SMB pages. A provider may rescale an image further.
 - A page still without an answer counts as empty.
 - No kept answer reached its output cap: each ended with `stop` or `end_turn`.
 - Runs: 23–24 September 2026.
+
+## Pages left empty
+
+After the second run, as empty / pages. "Blank" counts answers with no notes on every ask, kept as blank pages; the
+benchmark has nine title pages without staves.
+
+| Model | Public | Benchmark | Sibelius | Scans | Held-out scans | Photographs | SMB | SMB 2× |
+|---|---|---|---|---|---|---|---|---|
+| GPT-6 Astra | 0 / 48 | 0 / 83, 4 blank | 0 / 92, 2 blank | 1 / 48 | 2 / 61 | 0 / 10 | 14 / 101 | 13 / 101 |
+| GPT-6 Sol | 0 / 48 | 0 / 83, 7 blank | – | – | – | – | 1 / 101 | 2 / 101 |
+| Grok 4.6 | 0 / 48 | 9 / 83, 9 blank | – | – | – | – | 10 / 101 | – |
+| Claude Opus 5.5 | 0 / 48 | 0 / 83, 9 blank | 0 / 92, 2 blank | 0 / 48 | 0 / 61 | 0 / 10 | 0 / 101 | 0 / 101 |
+
+- Grok 4.6: the Azure endpoint closed the stream after about 29 minutes, mid-answer, on every ask.
+- GPT-6 Astra: no answer within 90 minutes.
+- GPT-6 Sol: declined ("I can't reliably read every note…").
+- Claude Opus 5.5: 42 upscaled SMB pages first failed on the account's spend limit and were answered on a second run.
