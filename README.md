@@ -1,7 +1,7 @@
 # PageMarks public fingering set
 
-Test set and scorer for *PageMarks: Reading Printed Fingering, Pedal and Dynamics from Full Piano Score Pages*
-(ISMIR 2026 Late-Breaking Demo).
+Test set and scorer for the PageMarks paper, *Beyond Notes: Reading Printed Fingering, Pedal and Dynamics from Full
+Piano Score Pages* (2026).
 
 ## Contents
 

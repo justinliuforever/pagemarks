@@ -45,7 +45,7 @@ def quarters(token):
     return whole * (2 - Fraction(1, 2 ** dots))
 
 
-def pitch_of(token, key=()):
+def pitch_of(token, key=(), carried=None):
     found = PITCH.search(token)
     if not found:
         return None
@@ -53,7 +53,13 @@ def pitch_of(token, key=()):
     octave = 3 + len(letters) if letters[0].islower() else 4 - len(letters)
     step = letters[0].upper()
     written = token.count("#") - token.count("-")
-    alter = written if written or "n" in token else dict(key).get(step, 0)
+    if written or "n" in token:
+        alter = written
+        if carried is not None:
+            carried[step, octave] = alter
+    else:
+        # Notes are written as printed: an accidental earlier in the bar holds for the same note, then the key does.
+        alter = (carried or {}).get((step, octave), dict(key).get(step, 0))
     return step, alter, 12 * (octave + 1) + SEMITONES[step] + alter
 
 
@@ -66,7 +72,7 @@ def ties_of(token):
     return frozenset(kinds)
 
 
-def read_token(token, spine, measure):
+def read_token(token, spine, measure, carried=None, held=None):
     parts = token.translate(SEPARATORS).split()
     if not parts:
         return
@@ -81,10 +87,19 @@ def read_token(token, spine, measure):
         digits = INLINE.search(part)
         if digits:
             part = part[:digits.start()]
-        pitch = pitch_of(part, spine.key)
+        pitch = pitch_of(part, spine.key, carried)
         if pitch:
             step, alter, midi = pitch
-            measure.notes.append(Note(spine.staff, spine.position, midi, length, grace, step, alter, ties_of(part),
+            ties = ties_of(part)
+            octave = (midi - alter) // 12 - 1
+            if held is not None and "stop" in ties and (step, octave) in held and not re.search(r"[#\-n]", part):
+                midi += held[step, octave] - alter
+                alter = held[step, octave]
+            if held is not None and "start" in ties:
+                held[step, octave] = alter
+            elif held is not None and "stop" in ties:
+                held.pop((step, octave), None)
+            measure.notes.append(Note(spine.staff, spine.position, midi, length, grace, step, alter, ties,
                                       tuple(digits.group(1)) if digits else ()))
     spine.position += length
 
@@ -132,6 +147,7 @@ def number_staves(spines):
 
 def walk_kern(text):
     spines = []
+    carried, held = {}, {}
     for line in text.splitlines():
         if line.startswith("!!"):
             yield "comment", line, comment_mark(line)
@@ -172,6 +188,7 @@ def walk_kern(text):
             number = re.search(r"\d+", tokens[0])
             for spine in spines:
                 spine.position = Fraction(0)
+            carried.clear()
             yield "bar", line, number.group(0) if number else None
             continue
         scratch = Measure("")
@@ -179,7 +196,7 @@ def walk_kern(text):
         for spine, token in zip(spines, tokens):
             if spine.kern and token != ".":
                 before_notes, before_rests = len(scratch.notes), len(scratch.rests)
-                read_token(token, spine, scratch)
+                read_token(token, spine, scratch, carried.setdefault(spine.staff, {}), held.setdefault(spine.staff, {}))
                 notes += scratch.notes[before_notes:]
                 rests += scratch.rests[before_rests:]
         fields = [token for spine, token in zip(spines, tokens) if spine.fing]
