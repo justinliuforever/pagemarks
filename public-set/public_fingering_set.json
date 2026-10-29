@@ -1,6 +1,6 @@
 {
  "frozen": "2026-09-23",
- "rule": "A score qualifies when PDMX keeps it in its deduplicated subset with a valid MusicXML; it is one piano part on two staves; it carries at least min_digits fingering marks, of which at least the fingering_like share are digits 1-5 (a score that spends the element on scale degrees or chord numbers is not fingered); and neither it, nor any score PDMX groups with it as the same song or arrangement, nor any score with the same normalised song name, is in PageMarks training data. Every qualifying score is taken, cut after the bar that keeps its MuseScore render within max_pages pages, and that cut MusicXML is both what is rendered and the truth.",
+ "rule": "A score qualifies when PDMX keeps it in its deduplicated subset with a valid MusicXML; it is one piano part on two staves; it carries at least min_digits fingering marks, of which at least the fingering_like share are digits 1-5 (a score that spends the element on scale degrees or chord numbers is not fingered); and neither it, nor any score PDMX groups with it as the same song or arrangement, nor any score with the same normalised song name, is in the data PageMarks learned fingering from. Every qualifying score is taken, cut after the bar that keeps its MuseScore render within max_pages pages, and that cut MusicXML is both what is rendered and the truth.",
  "renderer": "MuseScore4 4.7.5",
  "min_digits": 10,
  "fingering_like": 0.95,

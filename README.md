@@ -16,8 +16,8 @@ piece and adds none.
 - `public-set/`: 12 piano pieces from [PDMX](https://github.com/pnlong/PDMX) (Public Domain MusicXML) with printed
   fingering, 48 pages and 893 digits. `pdf/` holds the MuseScore 4.7.5 renderings, `musicxml/` the truths,
   `pairs.jsonl` the piece ids, and `public_fingering_set.json` the selection rule and each piece's PDMX metadata. No
-  piece, nor any PDMX score of the same song, is in PageMarks training data; the pieces are public and other systems
-  may have seen them.
+  piece, nor any PDMX score of the same song, is in the data PageMarks learned fingering from; their notes, not their
+  fingering, may appear in public pages it was pretrained on. Other systems may have seen the pieces.
 - `pagemarks/`: the scorer. Python 3.9 or later, no dependencies.
 - `smb-subset/pages.jsonl`: 101 pages of the [Sheet Music Benchmark](https://huggingface.co/datasets/PRAIG/SMB), used to
   compare notes on published scores.
