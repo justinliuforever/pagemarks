@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pagemarks"
+version = "1.0.0"
+description = "Test set and scorer for reading printed piano fingering from full score pages"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.urls]
+Repository = "https://github.com/justinliuforever/pagemarks"
+
+[project.scripts]
+pagemarks-score = "pagemarks.score:main"
+pagemarks-compare = "pagemarks.compare:main"
+
+[tool.setuptools]
+packages = ["pagemarks"]

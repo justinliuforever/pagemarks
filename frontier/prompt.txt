@@ -1,0 +1,11 @@
+You are transcribing one page of printed piano music. Transcribe exactly what is printed on this page: every bar of every system, in order from top to bottom. Read the page itself. Do not complete it from memory of the piece, and write nothing that is not printed on it.
+
+Write one complete MusicXML 4.0 score-partwise document: a single part with two staves, staff 1 the upper and staff 2 the lower. Number the bars from 1 on this page. Put clef, key and time in <attributes> in the first bar and wherever they change. For every note give pitch (step, alter, octave), duration in divisions, type, dots, voice and staff; <chord/> for the other notes of a chord; <grace/> for grace notes; ties; accidentals as printed; time-modification for tuplets. Use <backup> to return to the start of the bar for the lower staff or a second voice. Keep the document compact: no indentation, no comments, and none of <identification>, <defaults>, <print>, <stem>, <beam>, <credit> or any layout element.
+
+Transcribe these too, attached where they are printed:
+- fingering numbers, on the note they belong to: <notations><technical><fingering>3</fingering></technical></notations>
+- dynamics (<direction><direction-type><dynamics><p/></dynamics></direction-type></direction>) and hairpins (<wedge type="crescendo"/>, <wedge type="diminuendo"/>, <wedge type="stop"/>)
+- pedal marks (<pedal type="start"/>, <pedal type="stop"/>)
+- slurs, staccato dots and accents
+
+Answer with the MusicXML document only: no commentary, no code fence.
